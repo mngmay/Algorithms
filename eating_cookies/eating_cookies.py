@@ -7,20 +7,29 @@ import sys
 # recursive solution
 
 
-def eating_cookies(n, cache=None):
+def eating_cookies(n, cache={0: 1, 1: 1, 2: 2}):
     # Base cases
     # if there are invalid negative cookies, 0 ways
     if n < 0:
         return 0
 
-    elif n == 1 or n == 0:
-        return 1
+    if n not in cache:
+        cache[n] = eating_cookies(
+            n-1) + eating_cookies(n-2) + eating_cookies(n-3)
 
-    elif n == 2:
-        return 2
+    return cache[n]
 
-    else:
-        return eating_cookies(n-1) + eating_cookies(n-2) + eating_cookies(n-3)
+    # if n < 0:
+    #     return 0
+
+    # elif n == 1 or n == 0:
+    #     return 1
+
+    # elif n == 2:
+    #     return 2
+
+    # else:
+    #     return eating_cookies(n-1) + eating_cookies(n-2) + eating_cookies(n-3)
 
 
 # Notes
