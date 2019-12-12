@@ -8,7 +8,7 @@ def find_max_profit(prices):
 
     best_profit = prices[1] - prices[0]
 
-    for price in prices:
+    for price in prices[1:]:
         if price < curr_min:
             curr_min = price
 
